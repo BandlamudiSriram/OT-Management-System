@@ -243,6 +243,13 @@ export const AuthPage = () => {
                       required
                     />
                   </div>
+                  <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md mt-2 border border-border">
+                    <p className="font-semibold mb-1 text-primary">Demo Credentials:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li><strong>Admin:</strong> admin@hospital.com / admin</li>
+                      <li><strong>Doctor:</strong> doctor@hospital.com / doctor</li>
+                    </ul>
+                  </div>
                   <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? "Signing In..." : "Sign In"}
                   </Button>

@@ -21,6 +21,15 @@ const Index = () => {
 
   const fetchUserRole = async () => {
     try {
+      if (user?.id === 'static-admin-id') {
+        setUserRole('admin')
+        return
+      }
+      if (user?.id === 'static-doctor-id') {
+        setUserRole('doctor')
+        return
+      }
+
       // First check if user is a doctor
       const { data: doctorData, error: doctorError } = await supabase
         .from('doctors')

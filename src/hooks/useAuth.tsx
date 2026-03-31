@@ -61,6 +61,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, [])
 
   const signIn = async (email: string, password: string) => {
+    if (email === 'admin@hospital.com' && password === 'admin') {
+      const mockUser = { id: 'static-admin-id', email, app_metadata: {}, user_metadata: {}, aud: 'authenticated', created_at: '' } as User;
+      setUser(mockUser);
+      setSession({ access_token: 'mock-token', refresh_token: 'mock-refresh', expires_in: 3600, token_type: 'bearer', user: mockUser } as Session);
+      return { error: null };
+    }
+    if (email === 'doctor@hospital.com' && password === 'doctor') {
+      const mockUser = { id: 'static-doctor-id', email, app_metadata: {}, user_metadata: {}, aud: 'authenticated', created_at: '' } as User;
+      setUser(mockUser);
+      setSession({ access_token: 'mock-token', refresh_token: 'mock-refresh', expires_in: 3600, token_type: 'bearer', user: mockUser } as Session);
+      return { error: null };
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
